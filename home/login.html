@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style2.css">
+    
+</head>
+<body>
+    <div id="navbar">
+        <div class="another">  
+            <ul>
+                <li><a href="#">English</a></li>
+                <li><a href="#">Product</a></li>
+                <li><a href="#">Login</a></li>
+                <li id="signup"><a href="signup.html">Signup</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <section id="body">
+        <section id="request">
+            <div class="center-box">
+                <div id="login-form">
+                    <h1 id="LEO">Login</h1>
+                    <form id="loginForm" onsubmit="return handleLogin();">
+                        <input type="text" id="username" placeholder="Username" pattern="[a-zA-Z\s]+" title="Username should only contain letters or spaces">
+                        <input type="password" id="password" placeholder="Password" inputmode="numeric" pattern="[0-9]{10}" title="Password should be exactly 10 digits">
+                        <input type="submit" value="Login">
+                    </form>
+                    <div class="auth-links">
+                        <a href="#">Forgot Password</a> | <a href="signup.html">New User? Sign Up</a>
+                    </div>
+                    <div id="success-message">Logged in successfully!</div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <script>
+       function handleLogin() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+
+    if (username.match(/^[a-zA-Z\s]+$/) && password.match(/^\d{10}$/)) {
+        
+        document.getElementById("success-message").style.display = "block";
+        return false;
+    } else {
+        alert("Invalid username or password. Please check the input format.");
+        return false;
+    }
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+
+        #LEO {
+            color: black;
+            font-family: 'Champignon', cursive;
+        }
+
+        .center-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://img.freepik.com/free-vector/realistic-travel-background-with-elements_52683-77784.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        #navbar {
+            display: flex;
+            flex-direction: row;
+            height: 90px;
+            width: 100%;
+            background-color: black;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        #navbar ul {
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+            margin: 14px;
+        }
+
+        #navbar ul li {
+            margin-right: 10px;
+        }
+
+        #navbar ul li a {
+            text-decoration: none;
+            color: white;
+            border: 1px solid transparent;
+            padding: 5px 10px;
+            transition: border 0.3s ease;
+        }
+
+        #navbar ul li a:hover {
+            border: 1px solid white;
+            cursor: pointer;
+        }
+
+        h1 {
+            text-align: center;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .auth-links {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        #success-message {
+            display: none;
+            color: green;
+            margin-top: 10px;
+        }
+   

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Buddies Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="navbar">
+        <ul>
+            <li><a href="#" id="company-button">Company Policy</a></li>
+            <li><a href="#" id="safety-button">Safety</a></li>
+            <li><a href="#" id="help-button">Help</a></li>
+        </ul>
+        <h1>
+            Travel Buddies Hub
+            <img src="https://cdn-icons-png.flaticon.com/512/1533/1533414.png" alt="Logo" width="50" height="50">
+        </h1>
+        <div class="another">  
+            <ul>
+                <li><a href="#">English</a></li>
+                <li><a href="#">Product</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li id="signup"><a href="signup.html">Signup</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <section id="body">
+        <section id="request" class="center-box">
+            <h1 id="LEO">READY FOR ADVENTURE?</h1>
+            <input type="text" id="pickupLocation" placeholder="Enter pickup location">
+            <input type="text" id="destinationLocation" placeholder="Enter Destination">
+            <div class="button">
+                <button type="button" style="background-color: black; color: aliceblue;" onclick="submitRequest()">Request now</button>
+                <button type="button" style="background-color: black; color: aliceblue;">Schedule</button>
+            </div>
+            <div class="hidden" id="bookingInfo">
+                <p id="pickupInfo"></p>
+                <p id="destinationInfo"></p>
+                <button type="button" style="background-color: black; color: aliceblue;" onclick="bookNow()">Book Now</button>
+            </div>
+        </section>
+        <section class="content hidden" id="safety-section">
+            <h2>Safety Guidelines</h2>
+            <p>At Travel Buddies Hub, your safety is our top priority. Here are some safety guidelines to ensure a secure and enjoyable journey:</p>
+    
+            <ul>
+                <li>Always wear your seatbelt during the ride.</li>
+                <li>Follow the driver's instructions and adhere to traffic rules.</li>
+                <li>Keep your belongings secure and be aware of your surroundings.</li>
+                <li>Report any suspicious activity to the driver or support team.</li>
+                <li>In case of emergency, use the in-app emergency button or dial local emergency services.</li>
+            </ul>
+    
+            <p>For additional safety tips and information, please refer to our safety manual or contact our support team.</p>
+        </section>
+        <section class="content hidden" id="company-section">
+            <h2>Company Policies</h2>
+            <p>Our company is committed to providing a reliable and safe transportation service. Here are some of our key policies:</p>
+    
+            <ul>
+                <li>Customer privacy and data protection.</li>
+                <li>Transparent pricing and fair billing practices.</li>
+                <li>Timely and courteous service.</li>
+                <li>Continuous improvement of our technology and services.</li>
+                <li>Feedback and complaint resolution mechanisms.</li>
+            </ul>
+    
+            <p>If you have any questions or concerns about our policies, feel free to contact our support team.</p>
+        </section>
+        <section class="content hidden" id="help-section">
+            <h2>Help and Support</h2>
+            <p>If you need assistance or have any questions, please contact our helpline:</p>
+            <p>Contact Number: 9008709561</p>
+            <p>Police: 100</p>
+            <p>Ambulance: 108</p>
+        </section>
+    </section>
+    <script>
+        function submitRequest() {
+            const pickupLocation = document.getElementById('pickupLocation').value;
+            const destinationLocation = document.getElementById('destinationLocation').value;
+
+            fetch('http://localhost:3000/api/bookings', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ pickupLocation, destinationLocation }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('pickupInfo').innerText = `Pickup Location: ${data.pickupLocation}`;
+                document.getElementById('destinationInfo').innerText = `Destination Location: ${data.destinationLocation}`;
+                document.getElementById('bookingInfo').classList.remove('hidden');
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function bookNow() {
+            alert('Booking confirmed!');
+            // Add logic to send the booking details to the server and database here
+        }
+
+        const safetyButton = document.getElementById('safety-button');
+        const safetySection = document.getElementById('safety-section');
+        const companyButton = document.getElementById('company-button');
+        const companySection = document.getElementById('company-section');
+        const helpButton = document.getElementById('help-button');
+        const helpSection = document.getElementById('help-section');
+        const requestSection = document.getElementById('request');
+
+        safetyButton.addEventListener('click', function (event) {
+            event.preventDefault();
+            safetySection.classList.toggle('hidden');
+            companySection.classList.add('hidden');
+            helpSection.classList.add('hidden');
+            requestSection.classList.add('hidden');
+        });
+
+        companyButton.addEventListener('click', function (event) {
+            event.preventDefault();
+            companySection.classList.toggle('hidden');
+            safetySection.classList.add('hidden');
+            helpSection.classList.add('hidden');
+            requestSection.classList.add('hidden');
+        });
+
+        helpButton.addEventListener('click', function (event) {
+            event.preventDefault();
+            helpSection.classList.toggle('hidden');
+            safetySection.classList.add('hidden');
+            companySection.classList.add('hidden');
+            requestSection.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
